@@ -54,11 +54,11 @@ v-for="(item, index) of list"
 * 将循环出的项，通过 content 属性接收，便于子组件接收和显示，同时传索引 index
 ```
 :content="item"
-:i="index"
+:index="index"
 ```
 * 接受父组件传来的用于视图中显示的待办事项 item 值，和明确删除哪一项的索引 index，存入 props 属性中
 ```
-props: ["content", "i"]
+props: ["content", "index"]
 ```
 * 定义模板，template 中使用字符串定义子组件的模板，写入点击方法
 ```
@@ -66,7 +66,7 @@ props: ["content", "i"]
 ```
 * methods 写子组件的方法，发布订阅，将方法使用一个别名传给父组件，同时代入索引
 ```
-this.$emit("delete", this.i);
+this.$emit("delete", this.index);
 ```
 6. 父组件接收到订阅的方法名，
 ```
