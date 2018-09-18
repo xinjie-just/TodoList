@@ -12,16 +12,13 @@
 				<button @click="handle">提交</button>
 			</div>
 			<ul>
-				<!--<li v-for="(item, index) of list" :key="index">{{item}}</li>-->
 				<todo-item
 					v-for="(item, index) of list"
 					:key="index"
 					:content="item"
 					:i="index"
-					@delete="handleDelete"
-				>
-				
-				/todo-item>
+					@delete="handleDelete">
+				</todo-item>
 			</ul>
 		</div>
 		<script>
@@ -33,7 +30,7 @@
 						this.$emit("delete", this.i);
 					}
 				}
-			})
+			});
 			
 			new Vue({
 				el: "#root",
