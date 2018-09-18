@@ -3,31 +3,31 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>toDoList</title>
-		<script src="js/vue.js"></script>
+		<script src="vue.js"></script>
 	</head>
 	<body>
 		<div id="root">
 			<div>
 				<input type="text" v-model="inputValue" />
-				<button @click="handle">提交</button>
+				<button @click="handleSubmit">提交</button>
 			</div>
 			<ul>
 				<todo-item
 					v-for="(item, index) of list"
 					:key="index"
 					:content="item"
-					:i="index"
+					:index="index"
 					@delete="handleDelete">
 				</todo-item>
 			</ul>
 		</div>
 		<script>
 			Vue.component("todo-item", {
-				props: ["content", "i"],
-				template: "<li @click='handleClick'>{{content}} {{i}}</li>",
+				props: ["content", "index"],
+				template: "<li @click='handleClick'>{{content}}</li>",
 				methods: {
 					handleClick: function() {
-						this.$emit("delete", this.i);
+						this.$emit("delete", this.index);
 					}
 				}
 			});
@@ -39,7 +39,7 @@
 					list: []
 				},
 				methods: {
-					handle: function() {
+                    handleSubmit: function() {
 						this.list.push(this.inputValue);
 						this.inputValue = "";
 					},
